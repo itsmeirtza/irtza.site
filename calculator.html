@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculate with Irtza</title>
+
+<style>
+body {
+    background: #0a0a0a;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.calculator {
+    background: #111;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px #00f7ff;
+}
+
+/* Title */
+h1 {
+    color: #00f7ff;
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #00f7ff;
+}
+
+/* Display */
+#display {
+    width: 100%;
+    height: 60px;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background: #000;
+    color: #00f7ff;
+    box-shadow: inset 0 0 10px #00f7ff;
+}
+
+/* Buttons Grid */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 70px);
+    gap: 10px;
+}
+
+/* Neon Button */
+button {
+    height: 60px;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    color: white;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s;
+    box-shadow: 0 0 5px #00f7ff, 0 0 10px #00f7ff;
+}
+
+/* Hover Effect */
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff;
+}
+
+/* Click Effect (3D press) */
+button:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 0 10px #00f7ff;
+}
+
+/* Special buttons */
+.equal {
+    background: #00f7ff;
+    color: black;
+    box-shadow: 0 0 20px #00f7ff;
+}
+
+.clear {
+    background: red;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <h1>Calculate with Irtza</h1>
+
+    <input type="text" id="display" disabled>
+
+    <div class="buttons">
+        <button onclick="clearDisplay()" class="clear">C</button>
+        <button onclick="append('/')">/</button>
+        <button onclick="append('*')">*</button>
+        <button onclick="append('-')">-</button>
+
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button onclick="append('+')">+</button>
+
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button onclick="calculate()" class="equal">=</button>
+
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+        <button onclick="append('.')">.</button>
+
+        <button onclick="append('0')" style="grid-column: span 4;">0</button>
+    </div>
+</div>
+
+<script>
+let display = document.getElementById("display");
+
+function append(value) {
+    display.value += value;
+}
+
+function clearDisplay() {
+    display.value = "";
+}
+
+function calculate() {
+    try {
+        display.value = eval(display.value);
+    } catch {
+        display.value = "Error";
+    }
+}
+</script>
+
+</body>
+</html>
